@@ -26,10 +26,24 @@ example_requests = "A story about a girl named Alice and her best friend Bob, wh
 
 
 def parse_json(text:str) -> dict | None:
-    return json.loads(text)
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        s,e = text.find("{"), text.rfind("}")
+        if s!=-1 and e>s: # debug stat: fallback
+            try:
+                return json.load(text[s:e+1])
+            except json.JSONDecodeError:
+                return None
+    return None
 
 def call_for_json(prompt: str, system: str) -> dict:
     data = parse_json(call_model(prompt,max_tokens=1000,system=system))
+    
+    if data is None: # forcing it return the required JSON format
+        data = parse_json(call_model(prompt + "\n\nReturn ONLY valid JSON.", max_tokens=1000, system=system))
+    if data is None: # if parse fails
+        raise ValueError("Model did not return valid JSON after a retry.")
     return data
 
 def plan_story(request: str) -> dict:
@@ -48,7 +62,7 @@ def main():
         print("Please set the ANTHROPIC_API_KEY environment variable.")
         sys.exit(1)
 
-    user_input = input("What kind of story do you want to hear? (press Enter for an example) ").strip()
+    user_input = input("What kind of story do you want to hear? (press Enter for an example)?").strip()
     request = user_input or example_requests
 
     print("Planning the story:")
