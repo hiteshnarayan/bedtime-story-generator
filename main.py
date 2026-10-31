@@ -1,26 +1,30 @@
 import os
-import openai
+import sys
+
+import anthropic
 
 """
 Before submitting the assignment, describe here in a few sentences what you would have built next if you spent 2 more hours on this project:
 
 """
-
-def call_model(prompt: str, max_tokens=3000, temperature=0.1) -> str:
-    openai.api_key = os.getenv("OPENAI_API_KEY") # please use your own openai api key here.
-    resp = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}],
-        stream=False,
-        max_tokens=max_tokens,
-        temperature=temperature,
+client  = anthropic.Anthropic()
+def call_model(prompt: str, max_tokens=3000, system: str |None = None) -> str:
+    kwargs = {"system": system} if system else {}
+    res = client.messages.create(
+        model = "claude-haiku-5-5",
+        max_tokens = max_tokens,
+        messages = [{"role": "user", "content": prompt}],
+        **kwargs,
     )
-    return resp.choices[0].message["content"]  # type: ignore
+    return  "".join(b.text  for b in res.content if b.type == "text")
 
 example_requests = "A story about a girl named Alice and her best friend Bob, who happens to be a cat."
 
 
 def main():
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        print("Please set the ANTHROPIC_API_KEY environment variable.")
+        sys.exit(1)
     user_input = input("What kind of story do you want to hear? ")
     response = call_model(user_input)
     print(response)
