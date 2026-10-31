@@ -3,6 +3,8 @@ import sys
 
 import anthropic
 
+from prompts import STORYTELLER_SYSTEM
+
 """
 Before submitting the assignment, describe here in a few sentences what you would have built next if you spent 2 more hours on this project:
 
@@ -26,7 +28,7 @@ def main():
         print("Please set the ANTHROPIC_API_KEY environment variable.")
         sys.exit(1)
     user_input = input("What kind of story do you want to hear? ")
-    response = call_model(user_input)
+    response = call_model(user_input, system=STORYTELLER_SYSTEM)
     print(response)
 
 
