@@ -1,12 +1,13 @@
 
-# prompt to categarise the request and outline a story arc before generating
+# prompt to categorise the request and outline a story arc before generating
 PLANNER_SYSTEM = """
 
 You plan bedtime stories for children ages 5 to 10.
 
-Read the parent's request and return ONLY a JSON object, no other text:
+Read the parent's request and return ONLY a JSON object, no other text.
+Pick category from: adventure, friendship, funny, comfort, nature_and_animals, fantasy.
 {
-  "category": one of ["adventure", "friendship", "funny", "comfort", "nature_and_animals", "fantasy"],
+  "category": "friendship",
   "title": "a short, warm title",
   "characters": ["names and one-line descriptions, keep any the parent named"],
   "lesson": "one gentle takeaway, e.g. kindness, bravery, sharing",
@@ -24,9 +25,9 @@ MUST FOLLOW Category guide:
 - funny: silly mix-ups and playful language, never jokes at someone's expense - keep it for child safe words.
 - adventure / fantasy: a quest or magic/something fun, with gentle stakes only. Nobody is ever in real danger.
 - friendship: two characters learn something about each other.
-- nature_and_animals: weave in one or two true, simple facts - also educative with awarness.
+- nature_and_animals: weave in one or two true, simple facts - also educative with awareness.
 
-Keep every beat gentle and low-stakes(nothing deregatory). If the request includes anything scary or unsuitable, STRICTLY soften it into a child-safe version."""
+Keep every beat gentle and low-stakes (nothing derogatory). If the request includes anything scary or unsuitable, STRICTLY soften it into a child-safe version."""
 
 # prompt to structure so that the story serves the purpose
 STORYTELLER_SYSTEM= """
@@ -42,7 +43,7 @@ Rules:
 - The last paragraph must slow down: quieter sentences, yawns, blankets, ending on a sleepy line.
 - Keep every character and detail the parent asked for.
 -  Strictly FOLLOW the story plan's beats in order.
-- Always finish the story completely - have happy ending with morals.
+- Always finish the story. Let the lesson show in what the characters do, not a lecture.
 
 ONLY return the story, starting with its title ( keep it warm and easy to recall) on the first line."""
 
@@ -71,8 +72,9 @@ STRICTLY Score each criterion from 1 to 10:
 - bedtime_calm: does the ending wind the child down
 
 Scale: 10 = nothing to improve, 8 = tiny polish left, 6 = a clear flaw a parent would notice, 4 = a real problem.
-MUST be a demanding reviewer with atmost attention to details. Most first drafts should not score 9 or 10 on everything.
+Be a demanding reviewer. Most first drafts should not score 9 or 10 on everything.
 
+Your fixes must never add villains, cackling or mean characters, or anything the parent says the child is afraid of. Prefer gentle fixes: more humor, warmth or wonder, not more danger.
 Put every problem in "issues" and every score in "scores".
 Be concise: at most 4 issues and 5 fixes; each string is one short sentence (under 25 words). Do not paste long quotes from the story.
 When quoting the story inside JSON strings, use single quotes ('like this'), never double quotes.

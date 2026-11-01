@@ -76,7 +76,8 @@ def write_story(request: str, plan: dict, judgement: dict | None = None, draft: 
     if judgement and draft:
         prompt += (
             f"\n\nCurrent draft:\n{draft}\n\n"
-            "Revise this draft. Keep what already works and only change what the judge asked to fix.\n"
+            "Revise this draft. Keep what already works and only change what the judge asked to fix. "
+            "Never add anything the parent said the child is afraid of.\n"
             f"Issues:\n{json.dumps(judgement.get('issues', []), indent=2)}\n"
             f"Fixes:\n{json.dumps(judgement.get('fixes', []), indent=2)}"
         )
@@ -93,6 +94,13 @@ def passes(judgement: dict) -> bool:
         return all(int(scores[c]) >= PASS_SCORE for c in CRITERIA)
     except (KeyError, TypeError, ValueError):  # missing or non-numeric score counts as a fail
         return False
+
+def min_score(judgement: dict) -> int:
+    """Lowest criterion score, used to compare drafts. Missing scores count as 0."""
+    try:
+        return min(int(judgement["scores"][c]) for c in CRITERIA)
+    except (KeyError, TypeError, ValueError):
+        return 0
 
 def show_scores(label: str, judgement: dict) -> None:
     print(f"\n[Judge] {label}")
@@ -122,7 +130,6 @@ def main():
 
         print("\nWriting...")
         story = write_story(request, plan)
-        print("\n" + story)
 
         print("\nJudging...")
         judgement = judge_story(request, story)
@@ -130,11 +137,16 @@ def main():
 
         if not passes(judgement):
             print("\nRevising with the judge's notes...")
-            story = write_story(request, plan, judgement, draft=story)
-            print("\n" + story)
-            judgement = judge_story(request, story)
-            show_scores("Revised draft", judgement)
+            revised = write_story(request, plan, judgement, draft=story)
+            revised_judgement = judge_story(request, revised)
+            show_scores("Revised draft", revised_judgement)
 
+            if min_score(revised_judgement) >= min_score(judgement):
+                story, judgement = revised, revised_judgement
+            else:
+                print("  Revision scored lower, keeping the first draft.")
+
+        print("\n" + "=" * 60 + "\n" + story + "\n" + "=" * 60)
         print("  Result:", "PASS" if passes(judgement) else "best attempt after revision")
     except KeyboardInterrupt:
         print("\nStopped.")
