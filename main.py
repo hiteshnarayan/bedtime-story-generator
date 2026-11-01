@@ -63,15 +63,22 @@ def plan_story(request: str) -> dict:
     plan = call_for_json(f"Parent's Request: {request}", PLANNER_SYSTEM, max_tokens=4000)
     if plan.get("category") not in CATEGORY_STYLE:
         plan["category"] = "friendship" # default
+    avoid = plan.get("avoid", [])
+    if isinstance(avoid, str):
+        plan["avoid"] = [item.strip() for item in avoid.split(",") if item.strip()]
+    elif not isinstance(avoid, list):
+        plan["avoid"] = []
     return plan
 
 def write_story(request: str, plan: dict, judgement: dict | None = None, draft: str | None = None) -> str:
     """Write the story from the plan, or revise the draft using the judge's fixes."""
     style = CATEGORY_STYLE[plan["category"]]
+    avoid = ", ".join(plan.get("avoid", [])) or "nothing specific"
     prompt = (
         f"Parent's request: {request}\n\n"
         f"Story plan:\n{json.dumps(plan, indent=2)}\n\n"
-        f"Style for this kind of story: {style}"
+        f"Style for this kind of story: {style}\n\n"
+        f"Must avoid (the child is afraid of these): {avoid}"
     )
     if judgement and draft:
         prompt += (
@@ -83,9 +90,11 @@ def write_story(request: str, plan: dict, judgement: dict | None = None, draft: 
         )
     return call_model(prompt=prompt, max_tokens=8000, system=STORYTELLER_SYSTEM)
 
-def judge_story(request: str, story: str) -> dict:
+def judge_story(request: str, story: str, plan: dict) -> dict:
     """Score the story on 6 bedtime criteria and suggest fixes."""
-    return call_for_json(f"Parent's request: {request}\n\nStory:\n{story}", JUDGE_SYSTEM, max_tokens=4000)
+    avoid = ", ".join(plan.get("avoid", [])) or "nothing specific"
+    prompt = f"Parent's request: {request}\n\nMust avoid: {avoid}\n\nStory:\n{story}"
+    return call_for_json(prompt, JUDGE_SYSTEM, max_tokens=4000)
 
 def passes(judgement: dict) -> bool:
     """Story passes only if every criterion reaches PASS_SCORE, not just the avg."""
@@ -127,18 +136,19 @@ def main():
         print("\nPlanning the story...")
         plan = plan_story(request)
         print(f"Category: {plan['category']}\nTitle: {plan.get('title', '')}")
+        print(f"Avoid: {', '.join(plan.get('avoid', [])) or '-'}")
 
         print("\nWriting...")
         story = write_story(request, plan)
 
         print("\nJudging...")
-        judgement = judge_story(request, story)
+        judgement = judge_story(request, story, plan)
         show_scores("First draft", judgement)
 
         if not passes(judgement):
             print("\nRevising with the judge's notes...")
             revised = write_story(request, plan, judgement, draft=story)
-            revised_judgement = judge_story(request, revised)
+            revised_judgement = judge_story(request, revised, plan)
             show_scores("Revised draft", revised_judgement)
 
             if min_score(revised_judgement) >= min_score(judgement):

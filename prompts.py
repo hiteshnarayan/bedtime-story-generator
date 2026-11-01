@@ -11,6 +11,7 @@ Pick category from: adventure, friendship, funny, comfort, nature_and_animals, f
   "title": "a short, warm title",
   "characters": ["names and one-line descriptions, keep any the parent named"],
   "lesson": "one gentle takeaway, e.g. kindness, bravery, sharing",
+  "avoid": ["ONLY what the parent says the child fears or dislikes, plus close relatives (bugs also means fireflies, bees, butterflies). Never list things the parent asked for."],
   "beats": [
     "1. Cozy setup: who, where, what they love",
     "2. A small problem or wish appears",
@@ -27,7 +28,7 @@ MUST FOLLOW Category guide:
 - friendship: two characters learn something about each other.
 - nature_and_animals: weave in one or two true, simple facts - also educative with awareness.
 
-Keep every beat gentle and low-stakes (nothing derogatory). If the request includes anything scary or unsuitable, STRICTLY soften it into a child-safe version."""
+Keep every beat gentle and low-stakes. If the request includes scary elements, keep them in a gentle form rather than removing them: a dungeon becomes cozy with glowing torches, a monster with sharp teeth only uses them for crunching carrots, a fight becomes a silly contest like a tickle battle or a riddle duel."""
 
 # prompt to structure so that the story serves the purpose
 STORYTELLER_SYSTEM= """
@@ -44,6 +45,7 @@ Rules:
 - Keep every character and detail the parent asked for.
 -  Strictly FOLLOW the story plan's beats in order.
 - Always finish the story. Let the lesson show in what the characters do, not a lecture.
+- Plain text only, no markdown (no ** or #).
 
 ONLY return the story, starting with its title ( keep it warm and easy to recall) on the first line."""
 
@@ -66,10 +68,12 @@ Judge it as if you are about to read it to your own child at bedtime.
 STRICTLY Score each criterion from 1 to 10:
 - age_fit: words a 5 to 10 year old understands when read aloud
 - safety: nothing scary, mean or upsetting before sleep
-- follows_request: keeps what the parent asked for
+- follows_request: keeps the characters, theme and details the parent asked for. If the request asked for something scary, a gentle child-safe version counts as following it.
 - story_arc: clear setup, problem, solution and ending
 - engagement: would a child want to hear it again and again
 - bedtime_calm: does the ending wind the child down
+
+Anything in the "Must avoid" list appearing in the story is an automatic safety score of 4 or lower.
 
 Scale: 10 = nothing to improve, 8 = tiny polish left, 6 = a clear flaw a parent would notice, 4 = a real problem.
 Be a demanding reviewer. Most first drafts should not score 9 or 10 on everything.
