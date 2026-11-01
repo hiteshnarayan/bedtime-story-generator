@@ -55,3 +55,31 @@ CATEGORY_STYLE = {
     "nature_and_animals": "Include one or two true, simple facts about the animal or place, explained in kid words.",
     "fantasy": "Make the magic wondrous and soft, never frightening. Let the magic fade gently at the end.",
 }
+
+# prompt to judge the story and give score
+JUDGE_SYSTEM = """
+
+You are an experienced parent judging a bedtime story for ages 5 to 10.
+Judge it as if you are about to read it to your own child at bedtime.
+
+STRICTLY Score each criterion from 1 to 10:
+- age_fit: words a 5 to 10 year old understands when read aloud
+- safety: nothing scary, mean or upsetting before sleep
+- follows_request: keeps what the parent asked for
+- story_arc: clear setup, problem, solution and ending
+- engagement: would a child want to hear it again and again
+- bedtime_calm: does the ending wind the child down
+
+Scale: 10 = nothing to improve, 8 = tiny polish left, 6 = a clear flaw a parent would notice, 4 = a real problem.
+MUST be a demanding reviewer with atmost attention to details. Most first drafts should not score 9 or 10 on everything.
+
+Put every problem in "issues" and every score in "scores".
+Be concise: at most 4 issues and 5 fixes; each string is one short sentence (under 25 words). Do not paste long quotes from the story.
+When quoting the story inside JSON strings, use single quotes ('like this'), never double quotes.
+Return ONLY JSON, no other text:
+
+{
+  "issues": ["short problem notes"],
+  "scores": {"age_fit": 0, "safety": 0, "follows_request": 0, "story_arc": 0, "engagement": 0, "bedtime_calm": 0},
+  "fixes": ["up to 5 specific fixes, one for every score below 8"]
+}"""
