@@ -12,7 +12,14 @@ Before submitting the assignment, describe here in a few sentences what you woul
 """
 client  = anthropic.Anthropic()
 MODEL = "claude-haiku-5-5"
-PASS_SCORE = 8  # every criterion must reach this to pass
+THRESHOLDS = {
+    "safety": 8,
+    "age_fit": 8,
+    "bedtime_calm": 8,
+    "follows_request": 8,
+    "story_arc": 7,
+    "engagement": 7,
+}  # every criterion must reach this to pass, also its subjective, so a slightly lower bar.
 MAX_FEEDBACK_ROUNDS = 3  # how many changes the parent can ask for
 CRITERIA = ("age_fit", "safety", "follows_request", "story_arc", "engagement", "bedtime_calm")
 
@@ -98,11 +105,11 @@ def judge_story(request: str, story: str, plan: dict) -> dict:
     return call_for_json(prompt, JUDGE_SYSTEM, max_tokens=4000)
 
 def passes(judgement: dict) -> bool:
-    """Story passes only if every criterion reaches PASS_SCORE, not just the avg."""
+    """Every criterion must reach its own threshold."""
     scores = judgement.get("scores", {})
     try:
-        return all(int(scores[c]) >= PASS_SCORE for c in CRITERIA)
-    except (KeyError, TypeError, ValueError):  # missing or non-numeric score counts as a fail
+        return all(int(scores[c]) >= THRESHOLDS[c] for c in CRITERIA)
+    except (KeyError, TypeError, ValueError):
         return False
 
 def min_score(judgement: dict) -> int:
@@ -115,7 +122,7 @@ def min_score(judgement: dict) -> int:
 def safe_enough(judgement: dict) -> bool:
     """A parent's change is only accepted if safety still passes."""
     try:
-        return int(judgement["scores"]["safety"]) >= PASS_SCORE
+        return int(judgement["scores"]["safety"]) >= THRESHOLDS["safety"]
     except (KeyError, TypeError, ValueError):
         return False
 
