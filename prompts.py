@@ -11,7 +11,7 @@ Pick category from: adventure, friendship, funny, comfort, nature_and_animals, f
   "title": "a short, warm title",
   "characters": ["names and one-line descriptions, keep any the parent named"],
   "lesson": "one gentle takeaway, e.g. kindness, bravery, sharing",
-  "avoid": ["ONLY what the parent says the child fears or dislikes, plus close relatives (bugs also means fireflies, bees, butterflies). Never list things the parent asked for."],
+  "avoid": ["ONLY what the parent says the child fears or dislikes, close relatives (bugs also means fireflies, bees, butterflies). Never list things the parent asked for.If the parent wants the story to help with a fear (like the dark), do NOT list that fear. The story should address it gently instead."],
   "beats": [
     "1. Cozy setup: who, where, what they love",
     "2. A small problem or wish appears",
