@@ -13,6 +13,7 @@ Before submitting the assignment, describe here in a few sentences what you woul
 client  = anthropic.Anthropic()
 MODEL = "claude-haiku-5-5"
 PASS_SCORE = 8  # every criterion must reach this to pass
+MAX_FEEDBACK_ROUNDS = 3  # how many changes the parent can ask for
 CRITERIA = ("age_fit", "safety", "follows_request", "story_arc", "engagement", "bedtime_calm")
 
 def call_model(prompt: str, max_tokens=8000, system: str |None = None) -> str:
@@ -111,6 +112,13 @@ def min_score(judgement: dict) -> int:
     except (KeyError, TypeError, ValueError):
         return 0
 
+def safe_enough(judgement: dict) -> bool:
+    """A parent's change is only accepted if safety still passes."""
+    try:
+        return int(judgement["scores"]["safety"]) >= PASS_SCORE
+    except (KeyError, TypeError, ValueError):
+        return False
+
 def show_scores(label: str, judgement: dict) -> None:
     print(f"\n[Judge] {label}")
     scores = judgement.get("scores", {})
@@ -158,6 +166,25 @@ def main():
 
         print("\n" + "=" * 60 + "\n" + story + "\n" + "=" * 60)
         print("  Result:", "PASS" if passes(judgement) else "best attempt after revision")
+
+        for _ in range(MAX_FEEDBACK_ROUNDS):
+            feedback = input("\nWant any changes? (e.g. 'make it funnier', 'shorter') or press Enter to finish: ").strip()
+            if not feedback:
+                break
+
+            print("\nRevising with your changes...")
+            revised = write_story(request, plan, {"fixes": [f"The parent asked: {feedback}"]}, draft=story)
+            revised_judgement = judge_story(f"{request} (parent also asked: {feedback})", revised, plan)
+            show_scores("Your revised story", revised_judgement)
+
+            if safe_enough(revised_judgement):
+                story, judgement = revised, revised_judgement
+            else:
+                print("  That change made the story less safe for bedtime, keeping the previous version.")
+
+            print("\n" + "=" * 60 + "\n" + story + "\n" + "=" * 60)
+
+        print("\nSweet dreams!")
     except KeyboardInterrupt:
         print("\nStopped.")
         sys.exit(130)
