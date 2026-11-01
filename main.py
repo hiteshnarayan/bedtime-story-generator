@@ -11,6 +11,7 @@ Before submitting the assignment, describe here in a few sentences what you woul
 """
 client  = anthropic.Anthropic()
 MODEL = "claude-haiku-5-5"
+PASS_SCORE = 8  # every criterion must reach this to pass
 
 def call_model(prompt: str, max_tokens=8000, system: str |None = None) -> str:
     kwargs = {"system": system} if system else {}
@@ -72,6 +73,22 @@ def judge_story(request: str, story: str) -> dict:
     """  Score the story on 6 bedtime criteria and suggest fixes """
     return call_for_json(f"Parent's request: {request}\n\nStory:\n{story}", JUDGE_SYSTEM, max_tokens=4000)
 
+def passes(judgement: dict) -> bool:
+    """ Story passes only if every criterion reaches pass_score, not just the avg """
+    scores = judgement.get("scores", {})
+    return bool(scores) and min(scores.values()) >= PASS_SCORE
+
+def show_scores(label: str, judgement: dict) -> None:
+    print(f"\n[Judge] {label}")
+    for name, score in judgement.get("scores", {}).items():
+        print(f"  {name:<16} {score}")
+    if not passes(judgement):
+        print("  Fixes:")
+        for fix in judgement.get("fixes", []):
+            print(f"   - {fix}")
+
+
+
 
 
 def main():
@@ -93,6 +110,9 @@ def main():
     print("\nJudging:")
     judgement = judge_story(request, story)
     print(json.dumps(judgement, indent=2))
+
+    show_scores("First draft", judgement)
+    print("  Result:", "PASS" if passes(judgement) else "NEEDS REVISION")
 
 
 if __name__ == "__main__":
