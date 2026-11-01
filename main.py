@@ -7,7 +7,10 @@ import anthropic
 from prompts import STORYTELLER_SYSTEM, PLANNER_SYSTEM, CATEGORY_STYLE, JUDGE_SYSTEM
 
 """
-Before submitting the assignment, describe here in a few sentences what you would have built next if you spent 2 more hours on this project:
+   1. Build an eval set of 20 varied requests and track scores across prompt changes, so changes are measured, not guessed.
+   2. Calibrate the judge against my own ratings and add a real reading-level metric instead of trusting the model's opinion of age fit.
+   3. Use a separate model as the judge, since the storyteller is currently grading its own style.
+   4. Stream the story as it's written and remember a child's favorite characters across nights.
 
 """
 client  = anthropic.Anthropic()
