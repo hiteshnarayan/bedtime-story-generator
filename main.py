@@ -3,7 +3,7 @@ import sys
 import json
 import anthropic
 
-from prompts import STORYTELLER_SYSTEM, PLANNER_SYSTEM
+from prompts import STORYTELLER_SYSTEM, PLANNER_SYSTEM, CATEGORY_STYLE
 
 """
 Before submitting the assignment, describe here in a few sentences what you would have built next if you spent 2 more hours on this project:
@@ -39,7 +39,7 @@ def parse_json(text:str) -> dict | None:
 
 def call_for_json(prompt: str, system: str) -> dict:
     data = parse_json(call_model(prompt,max_tokens=1000,system=system))
-    
+
     if data is None: # forcing it return the required JSON format
         data = parse_json(call_model(prompt + "\n\nReturn ONLY valid JSON.", max_tokens=1000, system=system))
     if data is None: # if parse fails
@@ -47,12 +47,16 @@ def call_for_json(prompt: str, system: str) -> dict:
     return data
 
 def plan_story(request: str) -> dict:
-    """ Outlines the story arc """
-    return call_for_json(f"Parent's Request: {request}", PLANNER_SYSTEM)
+    """ Categorise then Outlines the story arc """
+    plan = call_for_json(f"Parent's Request: {request}", PLANNER_SYSTEM)
+    if plan.get("category") not in CATEGORY_STYLE:
+        plan["category"] = "friendship" # default
+    return plan
 
 def write_story(request: str, plan:dict) -> str:
     """  Generators the story """
-    prompt = f"Parent's request: {request}\n\nStory plan:\n{json.dumps(plan, indent=2)}"
+    style = CATEGORY_STYLE[plan["category"]]
+    prompt = (f"Parent's request: {request}\n\n"f"Story plan:\n{json.dumps(plan, indent=2)}\n\n"f"Style for this kind of story: {style}")
     return call_model(prompt=prompt, max_tokens=2000, system=STORYTELLER_SYSTEM)
 
 
@@ -67,7 +71,7 @@ def main():
 
     print("Planning the story:")
     plan = plan_story(request)
-    print(f"Title: {plan.get('title', '')}")
+    print(f" Category: {plan['category']}\nTitle: {plan.get('title', '')}")
 
     print("\nWriting:")
     story = write_story(request,plan)
