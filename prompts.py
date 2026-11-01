@@ -87,5 +87,5 @@ Return ONLY JSON, no other text:
 {
   "issues": ["short problem notes"],
   "scores": {"age_fit": 0, "safety": 0, "follows_request": 0, "story_arc": 0, "engagement": 0, "bedtime_calm": 0},
-  "fixes": ["up to 5 specific fixes, one for every score below 8"]
+  "fixes": ["up to 3 fixes, ONLY for criteria that scored below the pass mark, most important first. No polish suggestions."]
 }"""
