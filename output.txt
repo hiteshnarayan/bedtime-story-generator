@@ -1,0 +1,251 @@
+What kind of story do you want to hear? (press Enter for an example) My daughter Mia is 6 and scared of spiders and bugs. Can you tell her a funny adventure about a little dragon who explores a spooky old castle?
+
+Planning the story...
+Category: adventure
+Title: Pip and the Giggling Castle
+Avoid: spiders, bugs, insects, webs and cobwebs
+
+Writing...
+
+Judging...
+
+[Judge] First draft
+  age_fit          9
+  safety           9
+  follows_request  9
+  story_arc        9
+  engagement       7
+  bedtime_calm     9
+
+============================================================
+Pip and the Giggling Castle
+
+Pip was a small green dragon who lived in a warm cave near an old castle on the hill. Every evening, the torches on the castle walls glowed gold. Flick, flick, flick. Pip loved toexplore when the torches flickered.
+
+Pip had tried to fly once. The first flight was very wobbly. Flap, flap, wobble, wobble, bump! But Pip was not sad. Pip just tried again, one flap at a time.
+
+One night, a breeze whispered past Pip's ear. "The castle has a hidden treasure room," it said. "Find it before the moon is high!"
+
+Pip's eyes grew wide. "A treasure room!"
+
+Pip hurried to the castle. Inside, the halls were full of echoes. Pip's footsteps went tap, tap, tap, and the echoes went tap, tap, tap. A door went creeeak. Pip's heart went thump, thump.
+
+Pip took one careful step. Then another. Then another.
+
+"I will sneak in through that tall window," Pip whispered. Pip climbed up, up, up. Pip wiggled through the window. But then Pip's nose began to twitch.
+
+"Ah... ah..." Pip tried to hold it in. "AH-CHOO!"
+
+CLANK! A suit of armor jumped and rattled.
+
+Then the armor sneezed too. "AH-CHOO!"
+
+Pip stared. The armor stared. Then they both started to giggle. Pip giggled so hard that Pip tumbled right off the windowsill. Flump! Pip landed on a soft pile of pillows.
+
+"I'm Mo," said the armor, in a squeaky little voice. "The dust tickles my nose."
+
+"I'm Pip," said the dragon. "My nose tickles too!"
+
+They giggled again, until their tummies hurt.
+
+Then a painting on the wall gave a big wink. It was Lady Lumen, a lady with a tall, feathery hat.
+
+"Hello, friends," she said with a twinkle. "Solve my riddle, and the treasure room door will open. I have hands, but I cannot clap. I have a face, but I cannot smile. What am I?"
+
+Pip scratched a little green head. "Hands? Hmm. Hands that cannot clap."
+
+Mo tapped his metal chin. "A face with no smile?"
+
+Pip thought one careful thought. Then another. "Wait! Maybe it is something that tells time?"
+
+"Tick-tock!" said Mo.
+
+"A clock!" they shouted together.
+
+Lady Lumen laughed and clapped her painted hands. "Yes, a clock! You solved it together!"
+
+With a creak and a rumble, the treasure room door swung open. Inside, a shelf sparkled with glowing lanterns. Next to them sat a big jar of honey drops.
+
+"Oooh," whispered Pip.
+
+Pip and Mo shared the honey drops. They were sweet and golden and warm.
+
+The torches began to dim, down to a soft, quiet glow. Flick... flick... flick... slower and slower.
+
+Pip gave a big yawn and curled up beside Mo's shiny armor. Mo's arm made a cozy blanket over Pip's wings.
+
+Somewhere deep in the castle walls, a gentle hum began. It was a lullaby, low and soft, just for them.
+
+Pip's eyes grew heavy. Mo's voice was a whisper now. "Goodnight, Pip."
+
+"Goodnight, Mo," yawned Pip. "Tomorrow, another careful step."
+
+The castle hummed on, and the torches glowed low, and two new friends drifted off to sleep.
+============================================================
+  Result: PASS
+
+Want any changes? (e.g. 'make it funnier', 'shorter') or press Enter to finish: make it funnier
+
+Revising with your changes...
+
+[Judge] Your revised story
+  age_fit          9
+  safety           9
+  follows_request  8
+  story_arc        8
+  engagement       7
+  bedtime_calm     9
+
+============================================================
+Pip and the Giggling Castle
+
+Pip was a small green dragon who lived in a warm cave near an old castle on the hill. Every evening, the torches on the castle walls glowed gold. Flick, flick, flick. Pip loved toexplore when the torches flickered.
+
+Pip had tried to fly once. The first flight was very wobbly. Flap, flap, WOBBLE, WOBBLE, BONK! Pip landed right on top of a very surprised goat. But Pip was not sad. Pip just tried again, one flap at a time.
+
+One night, a breeze whispered past Pip's ear. "The castle has a hidden treasure room," it said. "Find it before the moon is high!"
+
+Pip's eyes grew wide. "A treasure room! Yippee!" Pip did a happy somersault and bonked into a rock. "Ow. Still yippee."
+
+Pip hurried to the castle. Inside, the halls were full of echoes. "Hello!" called Pip. "Hello, hello, hello!" said the echoes. Pip giggled. Then a door went creeeak. Pip's heart went thump, thump. Pip's tail went wiggle, wiggle, and not in a brave way.
+
+Pip took one careful step. Then another. Then another.
+
+"I will sneak in through that tall window," Pip whispered. Pip climbed up, up, up. Pip wiggled through the window, one wiggle at a time. But then Pip's nose began to twitch.
+
+"Ah... ah..." Pip tried to hold it in. "AH-CHOO!"
+
+CLANK! A suit of armor jumped and rattled.
+
+Then the armor sneezed too. "AH-CHOO!" The helmet popped right off and rolled across the floor. Clang, clang, clang! It stopped at Pip's feet.
+
+Pip stared. The armor stared. Then they both started to giggle. Pip giggled so hard that Pip tumbled right off the windowsill. Flump! Pip landed on a soft pile of pillows.
+
+"I'm Mo," said the armor, in a squeaky little voice. "The dust tickles my nose. And my toes!"
+
+"I'm Pip," said the dragon. "My nose tickles too! Even my tail tickles!"
+
+They giggled again, until their tummies hurt.
+
+Then a painting on the wall gave a big wink. It was Lady Lumen, with a tall, feathery hat. "Hello, friends," she said with a twinkle. "Solve my riddle, and the treasure room door will open. I have hands, but I cannot clap. I have a face, but I cannot smile. What am I?"
+
+Pip scratched a little green head. "Hands that cannot clap? Do they have no fingers?"
+
+Mo tapped his metal chin. "A face with no smile? Maybe a very grumpy potato?"
+
+"Potatoes don't have hands!" giggled Pip.
+
+Pip thought one careful thought. Then another. "Wait! Maybe it tells time?"
+
+"Tick-tock!" said Mo, and his tummy went tick-tock.
+
+"A clock!" they shouted together.
+
+Lady Lumen laughed and clapped her painted hands. "Yes, a clock! You solved it together!"
+
+With a creak and a rumble, the treasure room door swung open. Inside, a shelf sparkled with glowing lanterns. Next to them sat a big jar of honey drops.
+
+"Oooh," whispered Pip.
+
+"Oooh," squeaked Mo, even squeakier.
+
+Pip and Mo shared the honey drops. They were sweet and golden and warm.
+
+The torches began to dim, down to a soft, quiet glow. Flick... flick... flick... slower and slower.
+
+Pip gave a big yawn and curled up beside Mo's shiny armor. Mo's arm made a cozy blanket over Pip's wings.
+
+Somewhere deep in the castle walls, a gentle hum began. It was a lullaby, low and soft, just for them.
+
+Pip's eyes grew heavy. Mo's voice was a whisper now. "Goodnight, Pip."
+
+"Goodnight, Mo," yawned Pip. "Tomorrow, another careful step."
+
+The castle hummed on, the torches glowed low, and two new friends drifted off to sleep.
+============================================================
+
+Want any changes? (e.g. 'make it funnier', 'shorter') or press Enter to finish: add a gaint spiderr
+
+Revising with your changes...
+
+[Judge] Your revised story
+  age_fit          8
+  safety           9
+  follows_request  4
+  story_arc        9
+  engagement       8
+  bedtime_calm     9
+  Fixes:
+   - Replace the requested giant spider with a big, friendly giant who is silly and kind, and never mention spiders or bugs.
+
+============================================================
+Pip and the Giggling Castle
+
+Pip was a small green dragon who lived in a warm cave near an old castle on the hill. Every evening, the torches on the castle walls glowed gold. Flick, flick, flick. Pip loved toexplore when the torches flickered.
+
+Pip had tried to fly once. Flap, flap, WOBBLE, WOBBLE, BONK! Pip landed right on top of a very surprised goat. But Pip was not sad. Pip just tried again, one flap at a time.
+
+One night, a breeze whispered past Pip's ear. "The castle has a hidden treasure room. Find it before the moon is high!"
+
+"A treasure room! Yippee!" Pip did a happy somersault and bonked into a rock. "Ow. Still yippee."
+
+Pip hurried to the castle. Inside, the halls were full of echoes. "Hello!" called Pip. "Hello, hello, hello!" said the echoes. Pip giggled. Then a door went creeeak. Pip's heart went thump, thump.
+
+Pip took one careful step. Then another. Then another.
+
+"I will sneak in through that tall window," Pip whispered. Pip climbed up, up, up. But then Pip's nose began to twitch.
+
+"Ah... ah..." Pip tried to hold it in. "AH-CHOO!"
+
+CLANK! A suit of armor jumped and rattled.
+
+Then the armor sneezed too. "AH-CHOO!" The helmet popped right off and rolled across the floor. Clang, clang, clang! It stopped at Pip's feet.
+
+Pip stared. The armor stared. Then they both giggled. Pip giggled so hard that Pip tumbled right off the windowsill. Flump! Pip landed on a soft pile of pillows.
+
+"I'm Mo," said the armor, in a squeaky little voice. "The dust tickles my nose. And my toes!"
+
+"I'm Pip," said the dragon. "My tail tickles too!"
+
+They giggled until their tummies hurt.
+
+Then a painting on the wall gave a big wink. It was Lady Lumen, with a tall, feathery hat. "Solve my riddle, and the treasure room door will open. I have hands, but I cannot clap.I have a face, but I cannot smile. What am I?"
+
+Pip scratched a little green head. "Hands that cannot clap?"
+
+Mo tapped his metal chin. "A face with no smile? A very grumpy potato?"
+
+"Potatoes don't have hands!" giggled Pip.
+
+Pip thought one careful thought. Then another. "Wait! Maybe it tells time?"
+
+"Tick-tock!" said Mo, and his tummy went tick-tock.
+
+"A clock!" they shouted together.
+
+Lady Lumen clapped her painted hands. "Yes, a clock! You solved it together!"
+
+With a creak and a rumble, the treasure room door swung open. Inside, a shelf sparkled with glowing lanterns. Next to them sat a big jar of honey drops.
+
+"Oooh," whispered Pip.
+
+"Oooh," squeaked Mo, even squeakier.
+
+Pip and Mo shared the honey drops. They were sweet and golden and warm.
+
+The torches began to dim, down to a soft, quiet glow. Flick... flick... flick... slower and slower.
+
+Pip gave a big yawn and curled up beside Mo's shiny armor. Mo's arm made a cozy blanket over Pip's wings.
+
+Somewhere deep in the castle walls, a gentle hum began. It was a lullaby, low and soft, just for them.
+
+Pip's eyes grew heavy. "Goodnight, Mo," yawned Pip. "Tomorrow, another careful step."
+
+"Goodnight, Pip," whispered Mo.
+
+The castle hummed on, the torches glowed low, and two new friends drifted off to sleep.
+============================================================
+
+Want any changes? (e.g. 'make it funnier', 'shorter') or press Enter to finish: 
+
+Sweet dreams!
